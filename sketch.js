@@ -4,6 +4,10 @@ const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
 var engine, world;
 var canvas, angle, tower, ground, cannon;
+
+//variavel de display não estáva sendo declara
+var ball;
+
 var balls=[];
 
 
@@ -23,7 +27,8 @@ function setup() {
   ground = new Ground(0, height - 1, width * 2, 1);
   tower = new Tower(150, 350, 160, 310);
   cannon = new Cannon(180, 110, 100, 50, angle);
-  
+  //a  classe estava apagada
+  ball = new CannonBall(cannon.x, cannon.y);
   
 
 }
@@ -50,20 +55,19 @@ function draw() {
 }
 
 function showCannonBall(ball, index){
-  ball.display();
+   ball.display();
 }
 
 function keyReleased() { 
   if(keyCode == 32){ 
     balls[balls.length-1].shoot(); 
-  
-  } 
+      } 
   }
 
   function keyPresed(){
     if(keyCode == 32){
-      var cannonball = new CannonBall(cannon.x, cannon.y);
-      balls.push(cannonball);
+      var ball = new CannonBall(cannon.x, cannon.y);
+      balls.push(ball);
     }
   }
 
